@@ -1,0 +1,28 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #fafafa;
+  --surface-1: #f4f4f5;
+  --surface-2: #ffffff;
+  --border: rgba(0,0,0,0.1);
+  --border-strong: rgba(0,0,0,0.15);
+  --border-danger: #ef4444;
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+  --text-muted: #a1a1aa;
+  --text-danger: #ef4444;
+  --bg-danger: #fff5f5;
+  --radius: 8px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+button { cursor: pointer; font-family: inherit; }
+input { font-family: inherit; }
+input:focus { outline: 2px solid var(--text-primary); outline-offset: -1px; }
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }

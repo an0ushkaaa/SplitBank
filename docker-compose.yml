@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: splitbank
+      POSTGRES_PASSWORD: splitbank123
+      POSTGRES_DB: splitbank
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U splitbank"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://splitbank:splitbank123@postgres:5432/splitbank
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  
